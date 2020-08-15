@@ -64,7 +64,7 @@ def ping_sites(config: Configuration):
 
     if successful_pings != attempted_pings:
         debug_message(config.verbose, "Percentage successful: " +
-                    str(int(100 * (successful_pings / float(attempted_pings)))) + "%")
+                      str(int(100 * (successful_pings / float(attempted_pings)))) + "%")
 
     return True if successful_pings > 0 else False
 
@@ -112,12 +112,13 @@ def run(config: Configuration):
                       f"Test {str(tests)} | Reboots {reboots} | Online: {str(success)} ")
         tests += 1
         if success == 0:
-          timestamp = datetime.now().strftime('%B %d, %Y %I:%M:%S %p')
-          debug_message(config.verbose, f"Offline: restarting router at {timestamp}")
-          reboots += 1
-          reboot_router(config)
-          with open('reboot_log.txt', 'a') as f:
-            f.write(timestamp + "\n")
+            timestamp = datetime.now().strftime('%B %d, %Y %I:%M:%S %p')
+            debug_message(config.verbose,
+                          f"Offline: restarting router at {timestamp}")
+            reboots += 1
+            reboot_router(config)
+            with open('reboot_log.txt', 'a') as f:
+                f.write(timestamp + "\n")
 
         debug_message(
             config.verbose, f"Waiting {str(config.delay_between_tests)} seconds...")
@@ -140,27 +141,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# # main loop: ping sites, turn appropriate lamp on, wait, repeat
-# test = 0
-# reboot = -1
-# while True:
-#   test+=1
-#   debug_message(debug, "----- Test " + str(test) + " -----")
-#   try:
-#       sys.argv[2] == "-test" # force a router reboot
-#       success = 0
-#   except:
-#       success = ping_sites(SITES, DELAY_BETWEEN_PINGS, 2)
-#   if success == 0:
-#       debug_message(debug, "---- No internet - restarting router ----")
-#       reboot+=1
-#       ret_reboot = turn_off_usb(reboot)
-#       if ret_reboot == 0:
-#           with open('reboot_flg.txt', 'w') as f:
-#               f.write(datetime.now().strftime('%B %d, %Y %I:%M:%S %p'))
-#   else:
-#       debug_message(debug, "---- Internet is working fine ----")
-#       reboot = -1
-#   debug_message(debug, "Waiting " + str(DELAY_BETWEEN_TESTS) + " seconds until next test.")
-#   time.sleep(DELAY_BETWEEN_TESTS)
