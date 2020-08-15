@@ -18,7 +18,7 @@ class Configuration:
         self.verbose = verbose
 
 
-def test_configuration(verbose):
+def test_offline_configuration(verbose):
     return Configuration(
         ["google.blah", "comcast.blah"],
         1,  # attempts
@@ -128,13 +128,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--verbose", action="store_true",
                         help="Print whats going on to stdout")
-    parser.add_argument("--testonly", action="store_true",
+    parser.add_argument("--test_offline", action="store_true",
                         help="Run in test mode, where pings to outside world will fail")
     args = parser.parse_args()
     print(
-        f"rpi-internet-monitor starting...\nverbose: {args.verbose} testonly: {args.testonly}\n\n")
-    configuration = test_configuration(
-        args.verbose) if args.testonly else default_configuration(args.verbose)
+        f"rpi-internet-monitor starting...\nverbose: {args.verbose} test_offline: {args.test_offline}\n\n")
+    configuration = test_offline_configuration(
+        args.verbose) if args.test_offline else default_configuration(args.verbose)
     run(configuration)
 
 

@@ -5,7 +5,7 @@ Program to monitor internet connection and reboot the router by turning a power 
 ## Highlights:
 
   1. Configurable time delays
-  2. debug and test modes
+  2. optional verbose operation and simulated offline modes
 
 ## Installation:
 
@@ -13,5 +13,4 @@ Program to monitor internet connection and reboot the router by turning a power 
   2. Install uhubctl (see https://github.com/mvp/uhubctl).
   3. Download / clone this software.
   4. Set up and register internet-monitor.service if you want to run this as a service when the Raspberry Pi starts up.
-  5. Optionally set up node-red and use the flows.json file.
-  
+
