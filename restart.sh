@@ -5,8 +5,5 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-cp internet-monitor.service /etc/systemd/system/internet-monitor.service
 systemctl stop internet-monitor.service
-systemctl daemon-reload
 systemctl start internet-monitor.service
-systemctl enable internet-monitor.service

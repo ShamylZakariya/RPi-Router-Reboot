@@ -35,9 +35,9 @@ def default_configuration(verbose):
         ["8.8.8.8", "1.1.1.1"],  # google dns and cloudflare
         4,  # attempts
         1,  # delay_between_pings
-        10,  # delay_between_tests
-        10,  # router_shutdown_delay
-        120,  # router_start_delay
+        30,  # delay_between_tests
+        30,  # router_shutdown_delay
+        360,  # router_start_delay
         verbose
     )
 
